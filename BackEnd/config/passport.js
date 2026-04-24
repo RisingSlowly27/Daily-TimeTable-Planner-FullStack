@@ -8,7 +8,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "http://localhost:8000/auth/google/callback"
+      callbackURL: "https://daily-timetable-planner-fullstack.onrender.com/auth/google/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
       try {

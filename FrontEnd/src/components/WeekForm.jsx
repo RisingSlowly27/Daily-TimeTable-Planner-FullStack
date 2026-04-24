@@ -66,7 +66,7 @@ function WeekForm({ weeks, setWeeks, setActiveWeekForm, setActivities }) {
                 <button
                   type="button"
                   onClick={async() =>{
-                    await fetch(`http://localhost:8000/weeks?key=${week.key}&name=${week.name}`,{
+                    await fetch(`https://daily-timetable-planner-fullstack.onrender.com/weeks?key=${week.key}&name=${week.name}`,{
                       method:"PUT",
                       credentials:"include"
                     });

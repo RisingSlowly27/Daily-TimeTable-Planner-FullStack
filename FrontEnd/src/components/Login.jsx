@@ -2,7 +2,7 @@ import React from "react";
 
 const Login = ({checkAuth}) => {
   const handleLogin=async()=>{
-    window.location.href="http://localhost:8000/auth/google";
+    window.location.href="https://daily-timetable-planner-fullstack.onrender.com/auth/google";
   };
   return (
     <div className="h-screen flex items-center justify-center">
