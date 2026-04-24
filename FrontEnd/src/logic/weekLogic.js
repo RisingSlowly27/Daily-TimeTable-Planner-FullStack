@@ -5,7 +5,7 @@ export const addWeek = async (name,setWeeks) =>{
   };
   setWeeks(prev=>[...prev,week]);
   try{
-    await fetch("http://localhost:8000/weeks",{
+    await fetch("https://daily-timetable-planner-fullstack.onrender.com/weeks",{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -28,7 +28,7 @@ export const duplicateWeek=async(week, setWeeks, setActivities)=>{
       old: week.key,
       new: newWeek
     });
-    const res=await fetch(`http://localhost:8000/activities/duplicateWeek?${params.toString()}`,{credentials:"include"});
+    const res=await fetch(`https://daily-timetable-planner-fullstack.onrender.com/activities/duplicateWeek?${params.toString()}`,{credentials:"include"});
     const newActs=await res.json();
     //gets all activities with week old and creates their copy with week: newWeek and adds to db.Activity as well as returns array of these copies with new week
     if(newActs.length!=0) setActivities(prev=>[...prev,...newActs]);
@@ -45,12 +45,12 @@ export const deleteWeek = async (week, setWeeks) => {
   }
   setWeeks(prev => prev.filter(w => w.key !== week));
   try {
-    await fetch(`http://localhost:8000/weeks/${week}`,
+    await fetch(`https://daily-timetable-planner-fullstack.onrender.com/weeks/${week}`,
       {
         method: "DELETE",
         credentials: "include"
       });
-    await fetch(`http://localhost:8000/activities?week=${week}`,
+    await fetch(`https://daily-timetable-planner-fullstack.onrender.com/activities?week=${week}`,
       {
         method: "DELETE",
         credentials: "include"

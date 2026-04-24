@@ -1,7 +1,7 @@
 export const addActivity = async (activity) => {
     try {
     const response = await fetch(
-        "http://localhost:8000/activities",
+        "https://daily-timetable-planner-fullstack.onrender.com/activities",
         {
         method: "POST",
         headers: {
@@ -19,7 +19,7 @@ export const addActivity = async (activity) => {
 export const updateActivity = async (id, updatedData, setActivities) => {
     try {
       await fetch(
-          `http://localhost:8000/activities/${id}`,
+          `https://daily-timetable-planner-fullstack.onrender.com/activities/${id}`,
           {
           method: "PUT",
           headers: {
@@ -40,7 +40,7 @@ export const updateActivity = async (id, updatedData, setActivities) => {
 export const deleteActivity = async (id, setActivities) => {
   try {
     await fetch(
-      `http://localhost:8000/activities?id=${id}`,
+      `https://daily-timetable-planner-fullstack.onrender.com/activities?id=${id}`,
       {
         method: "DELETE",
         credentials: "include"

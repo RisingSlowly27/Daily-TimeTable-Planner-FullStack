@@ -19,13 +19,13 @@ function Dashboard({user}){
     useEffect(()=>{
         const fetchData=async()=>{
             try{
-                const res1=await fetch("http://localhost:8000/activities",{credentials:"include"});
+                const res1=await fetch("https://daily-timetable-planner-fullstack.onrender.com/activities",{credentials:"include"});
                 if(res1.status==200){
                     const data1=await res1.json();
                     setActivities(data1);
                 }
                 else console.log("fetch Error Activities");
-                const res2=await fetch("http://localhost:8000/weeks",{credentials:"include"});
+                const res2=await fetch("https://daily-timetable-planner-fullstack.onrender.com/weeks",{credentials:"include"});
                 if(res2.status==200){
                     const data2=await res2.json();
                     setWeeks([{ key: "daily", name: "daily" },...data2]);

@@ -15,7 +15,7 @@ function App() {
 
   const checkAuth = async () => {
     try {
-      const res = await fetch("http://localhost:8000/auth/me",{credentials:"include"});
+      const res = await fetch("https://daily-timetable-planner-fullstack.onrender.com/auth/me",{credentials:"include"});
       console.log(res.status);
       if(res.status==200){
         const data=await res.json();
