@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+body{
+    background-image: url('./assets/background1.png');
+    background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 100vh; 
+}
+
+input,select{
+    background-color: white;
+    border: solid blue 2px;
+    border-radius:5px;
+}
+
+button{
+    border: solid black 1px;
+}
+
+tr{
+    border: solid black 1px;
+}
+
+td,th{
+    padding: 3px;
+}
