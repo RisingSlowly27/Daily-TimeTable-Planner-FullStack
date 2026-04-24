@@ -13,6 +13,8 @@ import errorHandler from './middlewares/errorHandler.js';
 
 const app=express();
 
+app.set("trust proxy", 1);
+
 app.use(cors({
   origin:process.env.FRONTEND,
   credentials: true
