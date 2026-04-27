@@ -33,7 +33,7 @@ router.post("/", asyncHandler(async (req, res) => {
     endTime,
     week
   };
-  const addedAct=await newActivity.create(newActivity);
+  const addedAct=await Activity.create(newActivity);
   res.json(addedAct);
 }));
 
