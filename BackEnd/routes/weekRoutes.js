@@ -15,8 +15,13 @@ router.post("/",asyncHandler(async(req,res)=>{
     res.status(201).json({message:"Success"});
 }));
 
-router.put("/",asyncHandler(async(req,res)=>{
-    await Weeks.updateOne({key:req.query.key},{$set:{name:req.query.name}});
+router.put("/name",asyncHandler(async(req,res)=>{
+    await Weeks.updateOne({email:req.user.email,key:req.query.key},{$set:{name:req.query.name}});
+    res.status(201).json({message:"Success"});
+}));
+
+router.put("/content",asyncHandler(async(req,res)=>{
+    await Weeks.updateOne({email:req.user.email,key:req.body.key},{$set:{content:req.body.content}});
     res.status(201).json({message:"Success"});
 }));
 

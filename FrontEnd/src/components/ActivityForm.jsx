@@ -36,9 +36,7 @@ function ActivityForm({ activeWeek, editingActivity, setEditingActivity, setActi
       await updateActivity(editingActivity._id, activity, setActivities);
       setEditingActivity(null);
     } else {
-      activity._id=Date.now();
-      await addActivity(activity);
-      setActivities(prev => [...prev, activity]);
+      await addActivity(activity,setActivities);
     }
     // Reset form
     setName("");

@@ -8,7 +8,7 @@ function Dashboard({user}){
     //States
     const [activities,setActivities]=useState([]);
     const [weeks,setWeeks]=useState([]);
-    const [activeWeek,setActiveWeek]=useState("daily");
+    const [activeWeek,setActiveWeek]=useState("sample");
     const [activeForm,setActiveForm]=useState(false);
     const [editingActivity,setEditingActivity]=useState(null);
     const [activeWeekForm,setActiveWeekForm]=useState(false);
@@ -28,7 +28,7 @@ function Dashboard({user}){
                 const res2=await fetch("https://daily-timetable-planner-fullstack.onrender.com/weeks",{credentials:"include"});
                 if(res2.status==200){
                     const data2=await res2.json();
-                    setWeeks([{ key: "daily", name: "daily" },...data2]);
+                    setWeeks(data2);
                 }
                 else console.log("fetch Error : ",res2);
                 setLoading(false);
@@ -69,6 +69,24 @@ function Dashboard({user}){
                     setActivities={setActivities}
                     />
                 )}
+                <div><textarea placeholder="Start typing your thoughts..." className="w-full max-w-4xl min-h-[250px] p-5 text-lg bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+                value={weeks.find(w => w.key === activeWeek).content} onChange={(e)=>{
+                    setWeeks(prev =>prev.map(w =>w.key === activeWeek?{...w,content: e.target.value}:w));
+                }}
+                ></textarea></div>
+                <div><button
+                  type="button"
+                  onClick={async() =>{
+                    await fetch(`https://daily-timetable-planner-fullstack.onrender.com/weeks/content`,{
+                        method:"PUT",
+                        credentials:"include",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({key: activeWeek,content:weeks.find(w => w.key === activeWeek).content})
+                    });
+                  }}
+                >Save Note</button></div>
                 </div>
                 <div className='w-90 col-span-1 lg:col-span-2 text-center'>
                 <button className='w-1/2 m-2 p-2 bg-red-500 border col-span-1' onClick={()=>{setActiveForm(true);setEditingActivity(null)}}>Add Activity</button>

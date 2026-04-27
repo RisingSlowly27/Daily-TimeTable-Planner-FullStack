@@ -1,6 +1,8 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import Users from "../models/Users.models.js";
+import Weeks from "../models/Weeks.models.js";
+import Activity from "../models/Activity.models.js";
 
 
 passport.use(
@@ -20,6 +22,21 @@ passport.use(
             name: profile.displayName,
             email: profile.emails[0].value
           });
+
+          await Weeks.create({
+            email: profile.emails[0].value,
+            key: "sample",
+            name: "Sample"
+          });
+          const SampleAct = await Activity.find({email:"allNew"});
+          const newActs = SampleAct.map(act => {
+            const { _id, ...rest } = act; // remove _id
+            return {
+              ...rest,
+              email: profile.emails[0].value
+            };
+          });
+          await Activity.insertMany(newActs);
         }
         done(null, user);
       } catch (err) {

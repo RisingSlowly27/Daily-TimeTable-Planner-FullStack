@@ -1,18 +1,20 @@
-export const addActivity = async (activity) => {
+export const addActivity = async (activity,setActivities) => {
     try {
-    const response = await fetch(
-        "https://daily-timetable-planner-fullstack.onrender.com/activities",
-        {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(activity),
-        credentials:"include"
-        }
-    );
+      const response = await fetch(
+          "https://daily-timetable-planner-fullstack.onrender.com/activities",
+          {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(activity),
+          credentials:"include"
+          }
+      );
+      const newActivity=await response.json();
+      setActivities(prev => [...prev, response]);
     } catch (error) {
-    console.log("Add activity error:", error);
+      console.log("Add activity error:", error);
     }
 };
 
