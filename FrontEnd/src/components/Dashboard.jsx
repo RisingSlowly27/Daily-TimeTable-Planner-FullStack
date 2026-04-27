@@ -54,14 +54,15 @@ function Dashboard({user}){
                     if(w.key!==activeWeek) return <button key={w.key} className="m-2 p-3 bg-blue-600 border" onClick={()=>setActiveWeek(w.key)}>{w.name}</button>;
                     return <span key={w.key}>
                     <button className="m-2 p-3 bg-red-500 border" onClick={()=>setActiveWeek(w.key)}>{w.name}</button>
-                    <div className="fixed lg:right-6 lg:top-24 bottom-4 right-2 w-[400px] max-w-[90vw] h-[350px] max-h-[80vh] z-10">
+                    <div className="fixed lg:right-6 lg:top-70 bottom-4 right-2 w-[575px] max-w-[90vw] h-[350px] max-h-[80vh] z-10">
                         Notes for <span className="text-blue-600 font-bold">{w.name}</span>
-                        <textarea placeholder="Start typing your thoughts..." className="w-full min-h-[250px] p-5 text-md bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+                        <textarea placeholder="Start typing your thoughts..." className="w-full min-h-[600px] p-5 text-md bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
                         value={w.content||""} onChange={(e)=>{
                             setWeeks(prev =>prev.map(w2 =>w2.key === activeWeek?{...w2,content: e.target.value}:w2));
                         }}
                         ></textarea>
                         <div><button
+                        className="bg-blue-600"
                         type="button"
                         onClick={async() =>{
                             await fetch(`https://daily-timetable-planner-fullstack.onrender.com/weeks/content`,{
