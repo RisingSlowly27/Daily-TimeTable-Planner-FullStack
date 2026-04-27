@@ -49,7 +49,7 @@ function Dashboard({user}){
             <h1 className="p-8 text-6xl font-bold text-center text-blue-600 [text-shadow:2px_2px_0_#000,-2px_2px_0_#000,2px_-2px_0_#000,-2px_-2px_0_#000]">Daily Timetable</h1>
             <div className='min-w-90 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 justify-items-center'>
                 <div className='hidden lg:block col-span-1'></div>
-                <div className='h-fit w-full col-span-1 md:col-span-2 lg:col-span-7 m-3 p-3 bg-yellow-200 justify-items-center border'>
+                <div className='h-fit w-full md:h-max-[700px] col-span-1 md:col-span-2 lg:col-span-7 m-3 p-3 bg-yellow-200 justify-items-center border'>
                 <div className='text-center'>{weeks.map(w =>{
                     if(w.key!==activeWeek) return <button key={w.key} className="m-2 p-3 bg-blue-600 border" onClick={()=>setActiveWeek(w.key)}>{w.name}</button>;
                     return <span key={w.key}>
