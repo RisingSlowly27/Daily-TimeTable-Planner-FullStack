@@ -68,12 +68,12 @@ function Dashboard({user}){
                     setEditingActivity={setEditingActivity}
                     setActivities={setActivities}
                     />
-                )}
-                <div><textarea placeholder="Start typing your thoughts..." className="w-full max-w-4xl min-h-[250px] p-5 text-lg bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+                )} <br></br><br></br>
+                <textarea placeholder="Start typing your thoughts..." className="w-full min-h-[250px] p-5 text-md bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
                 value={weeks.find(w => w.key === activeWeek)?.content||""} onChange={(e)=>{
                     setWeeks(prev =>prev.map(w =>w.key === activeWeek?{...w,content: e.target.value}:w));
                 }}
-                ></textarea></div>
+                ></textarea>
                 <div><button
                   type="button"
                   onClick={async() =>{
