@@ -49,12 +49,12 @@ function Dashboard({user}){
             <h1 className="p-8 text-6xl font-bold text-center text-blue-600 [text-shadow:2px_2px_0_#000,-2px_2px_0_#000,2px_-2px_0_#000,-2px_-2px_0_#000]">Daily Timetable</h1>
             <div className='min-w-90 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 justify-items-center'>
                 <div className='hidden lg:block col-span-1'></div>
-                <div className='h-fit w-full md:max-h-[736px] overflow-auto col-span-1 md:col-span-2 lg:col-span-7 m-3 p-3 bg-yellow-200 justify-items-center border'>
+                <div className='h-fit w-full lg:max-h-[736px] md:max-h-[600px] max-h-[400px] overflow-auto col-span-1 md:col-span-2 lg:col-span-7 m-3 p-3 bg-yellow-200 justify-items-center border'>
                 <div className='text-center'>{weeks.map(w =>{
                     if(w.key!==activeWeek) return <button key={w.key} className="m-2 p-3 bg-blue-600 border" onClick={()=>setActiveWeek(w.key)}>{w.name}</button>;
                     return <span key={w.key}>
                     <button className="m-2 p-3 bg-red-500 border" onClick={()=>setActiveWeek(w.key)}>{w.name}</button>
-                    <div className="fixed md:block hidden lg:right-6 lg:top-62 bottom-4 right-2 w-[575px] max-w-[90vw] h-[350px] max-h-[80vh] z-10">
+                    <div className="fixed lg:block hidden lg:right-6 lg:top-62 bottom-4 right-2 w-[575px] max-w-[90vw] h-[350px] max-h-[80vh] z-10">
                         Notes for <span className="text-blue-600 font-bold">{w.name}</span>
                         <textarea placeholder="Start typing your thoughts..." className="w-full min-h-[530px] p-5 text-md bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
                         value={w.content||""} onChange={(e)=>{
