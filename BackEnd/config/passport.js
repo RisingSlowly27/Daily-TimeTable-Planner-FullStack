@@ -23,14 +23,15 @@ passport.use(
             email: profile.emails[0].value
           });
           const sampleWeek = await Weeks.findOne({email:"allNew"});
-          console.log(sampleWeek);
-          const {_id,...rest}=sampleWeek;
+          const weekObj=sampleWeek.toObject();
+          const {_id,...rest}=weekObj;
           const newWeek = {...rest,email: profile.emails[0].value};
           await Weeks.create(newWeek);
           console.log(newWeek);
           const sampleAct = await Activity.find({email:"allNew"});
           const newActs = sampleAct.map(act => {
-            const { _id, ...rest } = act; // remove _id
+            const actObj=act.toObject();
+            const { _id, ...rest } = actObj; // remove _id
             return {
               ...rest,
               email: profile.emails[0].value
