@@ -41,7 +41,7 @@ function Dashboard({user}){
     },[])
 
     useEffect(()=>{
-        if(!weeks.find(week=>week.key==activeWeek)) setActiveWeek("daily");
+        if(!weeks.find(week=>week.key==activeWeek)) setActiveWeek("sample");
     },[weeks]);
     
     return (
@@ -70,7 +70,7 @@ function Dashboard({user}){
                     />
                 )}
                 <div><textarea placeholder="Start typing your thoughts..." className="w-full max-w-4xl min-h-[250px] p-5 text-lg bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
-                value={weeks.find(w => w.key === activeWeek).content} onChange={(e)=>{
+                value={weeks.find(w => w.key === activeWeek)?.content||""} onChange={(e)=>{
                     setWeeks(prev =>prev.map(w =>w.key === activeWeek?{...w,content: e.target.value}:w));
                 }}
                 ></textarea></div>
@@ -83,7 +83,7 @@ function Dashboard({user}){
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify({key: activeWeek,content:weeks.find(w => w.key === activeWeek).content})
+                        body: JSON.stringify({key: activeWeek,content:weeks.find(w => w.key === activeWeek)?.content||""})
                     });
                   }}
                 >Save Note</button></div>
