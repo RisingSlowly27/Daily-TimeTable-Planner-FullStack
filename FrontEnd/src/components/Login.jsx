@@ -12,7 +12,7 @@ const Login = ({checkAuth}) => {
         </h1>
 
         <p className="text-gray-600 mb-6">
-          Organize your day efficiently 🚀
+          Organize your day efficiently
         </p>
 
         <button
