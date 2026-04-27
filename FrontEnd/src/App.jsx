@@ -37,11 +37,11 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={!user ? <Navigate to="/dashboard" /> : <Login checkAuth={checkAuth}/>}
+          element={user ? <Navigate to="/dashboard" /> : <Login checkAuth={checkAuth}/>}
         />
         <Route
           path="/dashboard"
-          element={!user ? <Dashboard user={user} /> : <Navigate to="/" />}
+          element={user ? <Dashboard user={user} /> : <Navigate to="/" />}
         />
       </Routes>
     </Router>
