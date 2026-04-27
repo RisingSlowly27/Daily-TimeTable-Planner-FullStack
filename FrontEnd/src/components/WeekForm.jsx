@@ -79,7 +79,7 @@ function WeekForm({ weeks, setWeeks, setActiveWeekForm, setActivities }) {
             )}
           </div>
         ))}
-        <label>Add Week</label>
+        <label>Add Day</label>
         <input
           type="text"
           value={name}
