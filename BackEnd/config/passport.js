@@ -22,12 +22,12 @@ passport.use(
             name: profile.displayName,
             email: profile.emails[0].value
           });
-          const sampleWeek = await Weeks.find({email:"allNew"});
-          const {_id,...newWeek}=sampleWeek;
-          newWeek.email=profile.emails[0].value;
+          const sampleWeek = await Weeks.findOne({email:"allNew"});
+          const {_id,...rest}=sampleWeek;
+          const newWeek = {...rest,email: profile.emails[0].value};
           await Weeks.insertOne(newWeek);
-          const SampleAct = await Activity.find({email:"allNew"});
-          const newActs = SampleAct.map(act => {
+          const sampleAct = await Activity.find({email:"allNew"});
+          const newActs = sampleAct.map(act => {
             const { _id, ...rest } = act; // remove _id
             return {
               ...rest,
