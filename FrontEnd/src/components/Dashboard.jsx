@@ -95,11 +95,11 @@ function Dashboard({user}){
                     />
                 )} 
                 </div>
-                <div className='h-auto w-70 col-span-1 lg:col-span-2 text-center z-20'>
+                <div className='h-fit w-70 col-span-1 lg:col-span-2 text-center z-20'>
                 <button className='w-1/2 m-2 p-2 bg-red-500 border col-span-1' onClick={()=>{setActiveForm(true);setEditingActivity(null)}}>Add Activity</button>
                 {(activeForm || editingActivity)?<ActivityForm activeWeek={activeWeek} editingActivity={editingActivity} setActiveForm={setActiveForm} setEditingActivity={setEditingActivity} setActivities={setActivities}/>:<div className="m-1">Use this to Add Activity<br/> after Selecting a Day</div>}
                 </div>
-                <div className='h-auto w-70 col-span-1 lg:col-span-2 text-center z-20'>
+                <div className='h-fit w-70 col-span-1 lg:col-span-2 text-center z-20'>
                 <button onClick={()=>setActiveWeekForm(true)} className='max-h-10 w-1/2 m-2 p-2 bg-red-500 border col-span-2'>Add/Delete Day</button>
                 {activeWeekForm?<WeekForm weeks={weeks} setActiveWeekForm={setActiveWeekForm} setWeeks={setWeeks} setActivities={setActivities}/>:<div className="m-1">Use this to Create/Rename <br/>or Delete a Day</div>}
                 </div>
