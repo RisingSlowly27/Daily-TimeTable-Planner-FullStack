@@ -26,15 +26,15 @@ router.get("/duplicateWeek",asyncHandler(async (req, res) => {
 router.post("/", asyncHandler(async (req, res) => {
   const email=req.user.email;
   const { name, startTime, endTime, week } = req.body;
-  const newActivity = new Activity({
+  const newActivity ={
     email,
     name,
     startTime,
     endTime,
     week
-  });
-  await newActivity.save();
-  res.json(newActivity);
+  };
+  const addedAct=await newActivity.create(newActivity);
+  res.json(addedAct);
 }));
 
 router.put("/:id",asyncHandler(async(req,res)=>{

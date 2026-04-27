@@ -12,7 +12,7 @@ export const addActivity = async (activity,setActivities) => {
           }
       );
       const newActivity=await response.json();
-      setActivities(prev => [...prev, response]);
+      setActivities(prev => [...prev, newActivity]);
     } catch (error) {
       console.log("Add activity error:", error);
     }
